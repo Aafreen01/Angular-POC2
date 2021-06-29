@@ -1,0 +1,32 @@
+<h3 class="text-center mb-5">Angular POC 2</h3>
+    <div class="paddinglr30p" *ngIf="wellForm">
+        <h6>Add Well</h6>
+        <form [formGroup]="wellForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" formControlName="name">
+                <p class="text-danger" *ngIf="wellForm.controls.name.touched && wellForm.controls.name.errors?.required">
+                    Name is required
+                </p>
+
+            </div>
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" class="form-control" formControlName="type">
+                <p class="text-danger" *ngIf="wellForm.controls.type.touched && wellForm.controls.type.errors?.required">
+                    Type is required
+                </p>
+                <p class="text-danger" *ngIf="wellForm.controls.type.dirty && wellForm.controls.type.errors?.notallowedWellType && !wellForm.controls.type.errors?.required">
+                    Type value should be esp and na
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="sourceKey">Source Key</label>
+                <input type="text" class="form-control" formControlName="source">
+                <p class="text-danger" *ngIf="wellForm.controls.source.touched && wellForm.controls.source.errors?.required">
+                    Source is required
+                </p>
+            </div>
+            <button class="btn btn-success"(click)="onAddWell()" type="submit">Add Well</button>
+        </form>
+    </div>
